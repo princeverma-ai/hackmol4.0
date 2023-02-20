@@ -1,22 +1,27 @@
 {
-    "name": "test",
-    "version": "1.0.0",
-    "description": "",
-    "main": "server.js",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "start": "nodemon server.js"
-    },
-    "author": "prince",
-    "license": "ISC",
-    "dependencies": {
-        "compression": "^1.7.4",
-        "cors": "^2.8.5",
-        "dotenv": "^16.0.3",
-        "express": "^4.18.2",
-        "mongoose": "^6.8.3"
-    },
-    "devDependencies": {
-        "nodemon": "^2.0.20"
-    }
+  "dependencies": {
+    "compression": "^1.7.4",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "nodemon": "^2.0.20"
+  },
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "name": "code",
+  "version": "1.0.0",
+  "main": "app.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/princeverma-ai/hackmol4.0.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/princeverma-ai/hackmol4.0/issues"
+  },
+  "homepage": "https://github.com/princeverma-ai/hackmol4.0#readme",
+  "description": ""
 }

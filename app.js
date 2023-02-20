@@ -20,7 +20,7 @@ app.use(
 app.use(express.static("public"));
 
 //routes ------------------------------------------------------>
-app.use("/user", mainRouter);
+app.use("/", mainRouter);
 
 //Export app -------------------------------------------------->
 module.exports = app;

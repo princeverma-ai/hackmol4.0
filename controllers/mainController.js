@@ -3,6 +3,7 @@
 //Exports ---------------------------------------------------->
 exports.get = async (req, res) => {
     try {
+        console.log("some")
         res.status(200).json({
             status: "success",
             message: "Hello World",
