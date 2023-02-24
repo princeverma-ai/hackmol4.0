@@ -4,13 +4,42 @@ const cors = require("cors");
 const compression = require("compression");
 
 
-const axios=require('axios');
-const cheerio=require('cheerio');
+const request = require('request');
+const cheerio = require('cheerio');
 
-const query="8086 microprocessor";
-const queryArray=query.split(" ");
-const queryUrl=queryArray.join("+");
-const url=`https://www.google.com/search?q=${queryUrl}`
+const searchQuery = 'define ece';
+const numLinksToScrape = 3;
+
+// URL encode the search query and concatenate with Google search URL
+const searchUrl = 'https://www.google.com/search?q=' + encodeURIComponent(searchQuery);
+
+// Send a GET request to Google search URL
+request(searchUrl, (error, response, html) => {
+  if (!error && response.statusCode === 200) {
+    // Load the HTML response into Cheerio
+    const $ = cheerio.load(html);
+
+    // Extract the links from search results
+    const links = $('a');
+
+    console.log(links.length)
+
+    let validLinks= []
+
+    for(let link of links){
+        if(link.attribs.href.startsWith('/url?q=')){
+            validLinks.push(link.attribs.href.split('&')[0].replace('/url?q=', ''))
+        }
+    }
+    console.log(validLinks)
+
+
+  } else {
+    console.error('Error scraping Google search results:', error);
+  }
+});
+
+
 
 //initialize app ---------------------------------------------->
 const app = express();
@@ -23,24 +52,6 @@ app.use(
         origin: "*",
     })
 );
-
-async function getHtml(url){
-    try{
-    const {data}=await axios.get(url);
-    return cheerio.load(data);
-    }catch(err){
-        console.log(err);
-    }
-}
-
- getHtml(url).then(($)=>{
-    const data=[];
-    $('div[class="BNeawe s3v9rd AP7Wnd"]').each((i,el)=>{
-        data.push($(el).text());
-    })
-    console.log(data);
-}
-)
 
 
 app.use(express.static("public"));
