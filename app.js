@@ -11,8 +11,8 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
-const searchQuery = "define ece";
-getTopGoogleLinks(searchQuery, 3).then((links) => {
+const searchQuery = "Fourirer Transform";
+getTopGoogleLinks(searchQuery, 8).then((links) => {
   console.log(links);
 });
 
