@@ -2,17 +2,22 @@ const form = document.querySelector("#formSubmit");
 const input = document.querySelector("#searchInput");
 
 form.addEventListener("submit", (e) => {
-  console.log("clicked");
+  if (input.value === "") {
+    e.preventDefault();
+  }
 
-  const historyArrayAvailable = localStorage.getItem("historyArray");
-  if (historyArrayAvailable == null) {
-    historyArray = [];
+  let historyArrayAvailable = JSON.parse(localStorage.getItem("historyArray"));
+
+  if (historyArrayAvailable === null) {
+    historyArrayAvailable = [];
   }
 
   const historyObject = {
     time: Date.now(),
     search: input.value,
   };
-  historyArray.push(historyObject);
-  localStorage.setItem("historyArray", JSON.stringify(historyArray));
+
+  historyArrayAvailable.push(historyObject);
+  console.log(historyArrayAvailable);
+  localStorage.setItem("historyArray", JSON.stringify(historyArrayAvailable));
 });
