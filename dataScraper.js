@@ -19,18 +19,19 @@ exports.articleScraper = async (links) => {
     articlePromises.push(article);
   }
   const articles = await Promise.all(articlePromises);
-  console.log(articles);
 
   return articles;
 };
 
 //------------------------------------------------------------>
-exports.googleLinkScraper = async (searchQuery) => {
-  const results = await googleIt({ query: `${searchQuery}` });
-  const linkArray = results.map((result) => {
-    return result.link;
-  });
-  return linkArray;
+exports.googleLinkScraper = async (searchQuery, getOnlyLink = true) => {
+  let results = await googleIt({ query: `${searchQuery}` });
+  if (getOnlyLink) {
+    results = results.map((result) => {
+      return result.link;
+    });
+  }
+  return results;
 };
 
 function getDomain(url) {
