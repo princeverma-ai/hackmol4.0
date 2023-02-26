@@ -53,7 +53,7 @@ getData(searchQuery)
   });
 
 //routes ------------------------------------------------------->
-app.get("/search", searchController.searchController);
+// app.get("/search", searchController.searchController);
 
 //Export app -------------------------------------------------->
 module.exports = app;

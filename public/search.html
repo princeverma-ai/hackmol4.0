@@ -1,9 +1,4 @@
-const dataScraper = require("./../dataScraper");
-exports.searchController = async (req, res) => {
-  const searchQuery = "nebula meaning";
-  // //Top google links ------------------------------------------>
-  let links = await dataScraper.googleLinkScraper(searchQuery);
-  res.status(200).send(`<!DOCTYPE html>
+<!DOCTYPE html>
     <html lang="en">
     
     <head>
@@ -29,6 +24,11 @@ exports.searchController = async (req, res) => {
     
         .card {
             border: none;
+            border-radius: 20px;
+            background-color: white;
+        }
+        body{
+            background-color: #edf2f4;
         }
     
         .image-grid {
@@ -59,7 +59,7 @@ exports.searchController = async (req, res) => {
     
         <nav class="navbar navbar-expand-lg bg-body-tertiary" style="font-family: 'Rubik', sans-serif; font-size: 25px;">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#" style="font-weight: bold; font-size: 38px;">LOGO</a>
+                <a class="navbar-brand" href="#" style="font-weight: bold; font-size: 38px;">Web Scrapper</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                     aria-label="Toggle navigation">
@@ -86,9 +86,9 @@ exports.searchController = async (req, res) => {
     
         <div class="col-8" style="display: inline-block;">
             <div class="card mx-2 mb-2 mt-4 pt-3 "
-                style="width: 65rem;  min-height: 300px; max-height: max-content; background-color: rgba(139, 180, 197, 0.836); ">
+                style="width: 65rem;  min-height: 300px; max-height: max-content;  ">
                 <div class="card-body">
-                    <h5 class="card-title" style="color: beige; font-family: 'Merriweather', serif; font-size: 36px;">Google
+                    <h5 class="card-title" style=" font-family: 'Merriweather', serif; font-size: 36px;">Google
                         Results</h5>
                     <p class="card-text mt-3" style="font-family: 'Merriweather', serif;">asfsdfwfsdfsdfsdfsfsdf</p>
                     <div class="row" ">
@@ -117,9 +117,9 @@ exports.searchController = async (req, res) => {
         </div>
     
         <div class="card mx-1 mb-2 pt-3"
-            style="width: 30rem; min-height: 100vw; max-height:max-content;  float: right; background-color: rgba(139, 180, 197, 0.836);">
+            style="width: 30rem; min-height: 100vw; max-height:max-content;  float: right; ">
             <div class="card-body">
-                <h5 class="card-title" style="font-family: 'Merriweather', serif; color: beige; font-size: 36px;">NEWS</h5>
+                <h5 class="card-title" style="font-family: 'Merriweather', serif; font-size: 36px;">NEWS</h5>
                 <p class="card-text" style="font-family: 'Merriweather', serif;">Some quick example text to build on the
                     card title and make up the bulk of the card's content.</p>
                 <div class="row" style="margin: auto;">
@@ -131,9 +131,9 @@ exports.searchController = async (req, res) => {
             </div>
         </div>
         <div class="row">
-            <div class="card mx-2 ml-2 mt-2 py-3" style="width: 32rem; background-color: rgba(139, 180, 197, 0.836);">
+            <div class="card mx-2 ml-2 mt-2 py-3" style="width: 32rem; ">
                 <div class="card-body">
-                    <h5 class="card-title" style="font-family: 'Merriweather', serif; color: beige; font-size: 36px;">
+                    <h5 class="card-title" style="font-family: 'Merriweather', serif; ; font-size: 36px;">
                         Related PDFs</h5>
                     <div class="row" style="margin: auto;">
                         <a href="#" class="card-link">Card link</a>
@@ -143,9 +143,9 @@ exports.searchController = async (req, res) => {
                 </div>
             </div>
     
-            <div class="card mx-2 ml-2 mt-2 py-3" style="width: 32rem; background-color: rgba(139, 180, 197, 0.836);">
+            <div class="card mx-2 ml-2 mt-2 py-3" style="width: 32rem; ">
                 <div class="card-body">
-                    <h5 class="card-title" style="font-family: 'Merriweather', serif; color: beige; font-size: 36px;">
+                    <h5 class="card-title" style="font-family: 'Merriweather', serif; ; font-size: 36px;">
                         Research Papers</h5>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
                         card's content.</p>
@@ -159,9 +159,9 @@ exports.searchController = async (req, res) => {
         </div>
     
         <div class="card mx-2 ml-2 mt-2 py-3"
-            style="width: 65rem; background-color: rgba(139, 180, 197, 0.836); min-height: 350px; max-height: max-content;">
+            style="width: 65rem; ; min-height: 350px; max-height: max-content;">
             <div class="card-body">
-                <h5 class="card-title" style="font-family: 'Merriweather', serif; color: beige; font-size: 36px;">Youtube
+                <h5 class="card-title" style="font-family: 'Merriweather', serif; ; font-size: 36px;">Youtube
                     Links</h5>
                 
                 
@@ -169,7 +169,7 @@ exports.searchController = async (req, res) => {
                     title="Top 15+ Best Upcoming Mobile Phone Launches⚡March 2023" frameborder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     allowfullscreen></iframe>
-                    <div class="box" style="float: right; height: 150px; width: 78%; margin-top: 3px; background-color: black; color: white;">
+                    <div class="box" style="float: right; height: 150px; width: 78%; margin-top: 3px; ;">
                     <p> Lorem ipsum dolor sit, amet consectetur adipisicing elit. Similique reiciendis ipsa doloribus animi saepe
                     earum, hic cum odit dignissimos quis ad perferendis, nam, mollitia nihil. Et, facilis? Ipsum
                     exercitationem nam nisi hic molestiae?</p>
@@ -180,9 +180,9 @@ exports.searchController = async (req, res) => {
         </div>
     
         <div class="card mx-2 ml-2 mt-2 py-3"
-            style="width: 65rem ; min-height: 100vw;max-height: max-content; background-color: rgba(139, 180, 197, 0.836);">
+            style="width: 65rem ; min-height: 100vw;max-height: max-content; ;">
             <div class="card-body">
-                <h5 class="card-title" style="font-family: 'Merriweather', serif; color: beige; font-size: 36px;">Additional
+                <h5 class="card-title" style="font-family: 'Merriweather', serif; ; font-size: 36px;">Additional
                     Information
                 </h5>
     
@@ -238,5 +238,4 @@ exports.searchController = async (req, res) => {
                 </script>
     </body>
     
-    </html>`);
-};
+    </html>
