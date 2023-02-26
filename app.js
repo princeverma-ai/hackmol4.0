@@ -6,7 +6,10 @@ const searchController = require("./routes/search");
 const app = express();
 
 //middleware -------------------------------------------------->
+
+//setting url encodes in express.jsom
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 const searchQuery = "nebula meaning";
@@ -53,7 +56,7 @@ getData(searchQuery)
   });
 
 //routes ------------------------------------------------------->
-app.get("/search", searchController.searchController);
+app.post("/search", searchController.searchController);
 
 //Export app -------------------------------------------------->
 module.exports = app;

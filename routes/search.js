@@ -11,50 +11,24 @@ function getDomain(url) {
 }
 
 exports.searchController = async (req, res) => {
-  const searchQuery = "nebula meaning";
+  const searchQuery = req.body.searchInput;
   // //Top google links ------------------------------------------>
   let links = await dataScraper.googleLinkScraper(searchQuery);
   const articles = await dataScraper.articleScraper(links.slice(0, 3));
-  console.log(articles);
-  //   const images = await dataScraper.imageScraper(searchQuery);
-  //   console.log(images);
-  let images = [
-    {
-      url: "https://www.collinsdictionary.com/images/full/nebula_455426389.jpg",
-      source: "https://www.collinsdictionary.com/dictionary/english/nebula",
-      title: "Nebula definition and meaning | Collins English Dictionary",
-    },
-    {
-      url: "https://spaceplace.nasa.gov/nebula/en/nebula1.en.jpg",
-      source: "https://spaceplace.nasa.gov/nebula/",
-      title: "What Is a Nebula? | NASA Space Place – NASA Science for Kids",
-    },
-    {
-      url: "https://spaceplace.nasa.gov/nebula/en/nebula3.en.jpg",
-      source: "https://spaceplace.nasa.gov/nebula/",
-      title: "What Is a Nebula? | NASA Space Place – NASA Science for Kids",
-    },
-    {
-      url: "https://cdn.britannica.com/70/94870-050-2ECAB6AD/Cats-Eye-nebula.jpg",
-      source: "https://www.britannica.com/science/nebula",
-      title: "Nebula | Definition, Types, Size, & Facts | Britannica",
-    },
-    {
-      url: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Hs-2009-25-e-full.jpg/220px-Hs-2009-25-e-full.jpg",
-      source: "https://en.wikipedia.org/wiki/Nebula",
-      title: "Nebula - Wikipedia",
-    },
-  ];
+
+  const images = await dataScraper.imageScraper(searchQuery);
+  console.log(images);
+
   let imageString = "";
   images.forEach((element) => {
     imageString += `<div class="image-item">
-        <img src="${element.url}" alt="Image 4">
+        <img  src="${element.url}" alt="Image 4">
     </div>`;
   });
   const researchPapers = await dataScraper.googleLinkScraper(
     searchQuery + " research paper filetype:pdf"
   );
-  console.log(researchPapers);
+
   const pdf = await dataScraper.googleLinkScraper(searchQuery + "filetype:pdf");
 
   let pdfString = "";
@@ -73,7 +47,6 @@ exports.searchController = async (req, res) => {
     searchQuery + " youtube",
     false
   );
-  console.log(youtubeLinks);
   let youtubeString = "";
   youtubeLinks.forEach((element) => {
     youtubeString += `
@@ -90,7 +63,7 @@ exports.searchController = async (req, res) => {
     </div>`;
   });
 
-  const articleString = "";
+  let articleString = "";
   for (let i = 1; i < articles.length; i++) {
     articleString += `<img src="${articles[i].image}" alt="loading" style="width: 170px; height: 170px; float: right;">
       <div class="box">
@@ -136,16 +109,14 @@ exports.searchController = async (req, res) => {
       .image-grid {
           display: grid;
           grid-template-columns: repeat(1, 1fr);
-          grid-gap: 15px;
           float: right;
           margin-top: 26px;
           margin-right: 20px;
       }
   
       .image-item img {
-          max-width: 100%;
-          width: 100%;
-          height: 400px;
+          width: 400px;
+          height: 300px;
       }
   
       .box {
@@ -219,16 +190,7 @@ exports.searchController = async (req, res) => {
           
       </div>
   
-      <div class="card mx-1 mb-2 pt-3"
-          style="width: 30rem; min-height: 100vw; max-height:max-content;  float: right; ">
-          <div class="card-body">
-              <h5 class="card-title" style="font-family: 'Merriweather', serif; font-size: 36px;">NEWS</h5>
-              <div class="row" style="margin: auto;">
-                  
-              </div>
-  
-          </div>
-      </div>
+     
       <div class="row">
           <div class="card mx-2 ml-2 mt-2 py-3" style="width: 32rem; max-width:max-content ">
               <div class="card-body">
